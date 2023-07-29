@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { CurrentUser } from "../contexts/CurrentUser";
 import { useHistory } from "react-router";
 
 function Logout(){
