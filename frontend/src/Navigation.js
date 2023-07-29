@@ -7,26 +7,42 @@ function Navigation() {
 
   const { currentUser } = useContext(CurrentUser);
 
-  let loginActions = (
-    <>
-      <li style={{ float: "right" }}>
-        <a href="#" onClick={() => history.push("/sign-up")}>
-          Sign Up
-        </a>
-      </li>
-      <li style={{ float: "right" }}>
-        <a href="#" onClick={() => history.push("/login")}>
-          Login
-        </a>
-      </li>
-    </>
-  );
+  let loginActions
+
+  if(!currentUser){
+    loginActions = (
+      <>
+      
+        <li style={{ float: "right" }}>
+          <a href="#" onClick={() => history.push("/sign-up")}>
+            Sign Up
+          </a>
+        </li>
+        <li style={{ float: "right" }}>
+          <a href="#" onClick={() => history.push("/login")}>
+            Login
+          </a>
+        </li>
+      
+      </>
+      );
+  
+  }
 
   if (currentUser) {
     loginActions = (
+    <>
+    
       <li style={{ float: "right" }}>
         Logged in as {currentUser.firstName} {currentUser.lastName}
       </li>
+      <li style={{ float: "right" }}>
+        <a href="#" onClick={() => history.push("/logout")}>
+          Logout
+        </a>
+      </li>
+    
+    </>
     );
   }
 
